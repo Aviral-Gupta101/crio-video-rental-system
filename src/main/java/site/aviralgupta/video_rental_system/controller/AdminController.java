@@ -6,8 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import site.aviralgupta.video_rental_system.dto.VideoDto;
 import site.aviralgupta.video_rental_system.service.AdminService;
-import site.aviralgupta.video_rental_system.service.UserService;
-
 import java.util.Map;
 
 
@@ -15,7 +13,7 @@ import java.util.Map;
 @RequestMapping("/admin/video")
 public class AdminController {
 
-    AdminService adminService;
+    private final AdminService adminService;
 
     @Autowired
     public AdminController(AdminService adminService) {

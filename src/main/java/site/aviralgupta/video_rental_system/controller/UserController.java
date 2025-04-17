@@ -12,7 +12,7 @@ import site.aviralgupta.video_rental_system.service.UserService;
 @RequestMapping("/user")
 public class UserController {
 
-    UserService userService;
+    private final UserService userService;
 
     @Autowired
     public UserController(UserService userService) {

@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import site.aviralgupta.video_rental_system.dto.VideoDto;
 import site.aviralgupta.video_rental_system.entity.Video;
+import site.aviralgupta.video_rental_system.exceptions.exceptions.EntityNotFoundException;
 import site.aviralgupta.video_rental_system.repository.VideoRepository;
+import java.util.Optional;
 
 @Service
 public class AdminService {
@@ -29,6 +31,12 @@ public class AdminService {
     }
 
     public void deleteVideById(Integer id){
+
+        Optional<Video> optionalVideo = videoRepository.findById(id);
+
+        if(optionalVideo.isEmpty())
+            throw new EntityNotFoundException("Invalid video ID");
+
         videoRepository.deleteById(id);
     }
 
